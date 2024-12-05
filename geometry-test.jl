@@ -31,7 +31,7 @@ poly3 = Polygon(Point2D(1, 1), Point2D(2, 1), Point2D(1, 2))
 @test isa(Point2D(3, 4.0), Point2D)
 @test isa(Point2D("(5.0, -3.0)"), Point2D)
 
-# c) Test that creating a Point2D object using a string makes a Point2D object with the default constructor 
+# c) Test that creating a Point2D object using a string makes a Point2D object with the default constructor
 p4 = Point2D("(1.5, 2.5)")
 p5 = Point2D("(-1.0, 0.0)")
 p6 = Point2D("(3.0, -4.5)")
@@ -81,4 +81,10 @@ parallelogram = Polygon(0, 0, 3, 0, 4, 2, 1, 2)
 @test isapprox(Polygon.area(triangle), 6.0)
 @test isapprox(Polygon.area(rectangle), 8.0)
 @test isapprox(Polygon.area(parallelogram), 6.0)
+
+@testset "Midpoint caclulations" begin
+  @test midpoint(triangle) == Point2D(1/3,1/3)
+  @test midpoint(rectangle) == Point2D(0.5,1)
+end
+
 end
