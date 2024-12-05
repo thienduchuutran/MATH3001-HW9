@@ -295,7 +295,6 @@ end
 """
 ```
 midpoint(p::Polyon)
-This is a very nice function.
 ```
 calculates the midpoint of the polygon.
 """
