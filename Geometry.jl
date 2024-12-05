@@ -54,7 +54,7 @@ struct Polygon
     Polygon(points::Vector{Point2D})
     Polygon(c::Vector{<:Real})
     Polygon(c::Vararg{<:Real})
-
+    
     Create a `Point2D` by parsing a string representation of the form `"(x,y)"` or `"(x, y)"` where `x` and `y`
     can be integers or decimals, with optional spaces around the comma.
 
@@ -170,7 +170,7 @@ function area(poly::Polygon)
     sum2 = 0.0
     for i in 1:n
         x1, y1 = poly[i]
-        x2, y2 = poly[mod1(i + 1, n)]   #getting the next element in the list, and when we are at the last index, it wraps back up
+        x2, y2 = poly[mod1(i + 1, n)]   #getting the next element in the list, and when we are at the last index, it wraps back up 
         sum1 += x1 * y2
         sum2 += y1 * x2
     end
@@ -291,13 +291,4 @@ function Base.show(io::IO, poly::Polygon)
     points_str = join([string(p) for p in poly.point], ", ")
     print(io, "Polygon: ", points_str)
 end
-
-"""
-```
-midpoint(p::Polyon)
-```
-calculates the midpoint of the polygon.
-"""
-midpoint(p::Polygon) = Point2D(mean(map(pt -> pt.x, p.points)), mean(map(pt -> pt.y, p.points)))
-
 end
